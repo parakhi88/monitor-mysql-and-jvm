@@ -1,0 +1,10 @@
+---
+ssl: false
+lowercaseOutputName: false
+lowercaseOutputLabelNames: false
+whitelistObjectNames: []
+blacklistObjectNames: []
+rules:
+  - pattern: ".*"
+
+

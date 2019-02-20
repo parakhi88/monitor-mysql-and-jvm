@@ -4,7 +4,8 @@ Create a network: `docker network create test-network`
 
 ## JVM
 
-Create a dummy Java server (in case you don't have a Java running server yet) and use [JMX Exporter] (https://github.com/prometheus/jmx_exporter) to generate metrics for Prometheus (Replace `SimpleServer` to your main server)
+Create a dummy Java server (in case you don't have a Java running server yet) and use 
+[JMX exporter](https://github.com/prometheus/jmx_exporter) to generate metrics for Prometheus (Replace `SimpleServer` to your main server)
   Note that `SimpleServer` runs on port 8080
 
   - Go to `jvm` folder

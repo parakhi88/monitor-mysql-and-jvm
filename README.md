@@ -19,20 +19,7 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
       --network test-network  \
       --name jmx-exporter \
       jmx-exporter
-  ```
-
-2. Create Prometheus container
-  - Go to the root folder of the project
-  - ```
-    docker run -d
-      --name prometheus-server \
-      -p 9090:9090  \
-      --network test-network  \
-      --restart unless-stopped  \
-      --mount type=volume,src=prometheus-data,target=/prometheus \
-      --mount type=bind,src="$(pwd)"/prometheus/prometheus.yml,target=/etc/prometheus/prometheus.yml  \
-      prom/prometheus
-  ```
+    ```
 
 
 ## MySQL

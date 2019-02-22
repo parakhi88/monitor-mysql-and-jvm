@@ -12,4 +12,6 @@ scrape_configs:
   - job_name: mysql
     static_configs:
       - targets:
-          - 'mysql:9104'
+          - 'mysql-exporter:9104'
+        labels:
+          instance: mysql

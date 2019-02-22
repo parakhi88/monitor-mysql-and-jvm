@@ -2,15 +2,20 @@
 
 Create a network: `docker network create test-network`
 
+## Architecture Overview
+
+![Architecture image](./Monitor.png)
+
 ## JVM
 
-Create a dummy Java server (in case you don't have a Java running server yet) and use 
-[JMX exporter](https://github.com/prometheus/jmx_exporter) to generate metrics for Prometheus (Replace `SimpleServer` to your main server)
-  Note that `SimpleServer` runs on port 8080
+Create a dummy Java server (in case you don't have a Java running server yet) and use
+[JMX exporter](https://github.com/prometheus/jmx_exporter) to generate metrics for Prometheus (Replace `SimpleServer` to your main server).
 
-  - Go to `jvm` folder
+  Note that `SimpleServer` runs on port 8080.
+
+  - Go to `jvm` folder.
   - `wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.11.0/jmx_prometheus_javaagent-0.11.0.jar -O jmx_exporter.jar`
-  - Edit `jmx-config.yaml`
+  - Edit `jmx-config.yaml`.
   - `docker build -t jmx-exporter .`
   - ```
     docker run -d  \
@@ -24,7 +29,7 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
 
 ## MySQL
 
-1. Create a dummy MySQL database (in case you don't have a MySQL database) and use [MySQL exporter](https://github.com/prometheus/mysqld_exporter) to generate metrics for Prometheus
+1. Create a dummy MySQL database (in case you don't have a MySQL database) and use [MySQL exporter](https://github.com/prometheus/mysqld_exporter) to generate metrics for Prometheus.
 
   ```
   docker run -d \
@@ -33,20 +38,20 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
   --network test-network \
   --env MYSQL_ROOT_PASSWORD=mypassword \
   --volume mysql-datadir:/var/lib/mysql \
-  --default-authentication-plugin=mysql_native_password
   mysql:8 \
+  --default-authentication-plugin=mysql_native_password
 
   ```
 
-2. Create a specific user for the exporter
+2. Create a specific user for the exporter.
   - `docker exec -it mysql mysql -uroot -p` and enter the password above
   - Run the below commands in the MySQL Shell:
-    ``
+    ```
       CREATE USER 'exporter'@'%' IDENTIFIED BY 'password' WITH MAX_USER_CONNECTIONS 3;
       GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'exporter'@'%';
-    ``
+    ```
 
-3. Run MySQL exporter:
+3. Exit the running MySQL container and run MySQL exporter (Replace the password of `exporter` below).
   ```
   docker run -d \
   --name mysql-exporter \
@@ -63,10 +68,10 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
   ```
 
 ## Prometheus
-1. Go to the root folder of the project to create a Prometheus container
+1. Go to the root folder of the project to create a Prometheus container.
   ```
-    docker run -d
-      --name prometheus-server \
+    docker run -d \
+      --name prometheus \
       -p 9090:9090  \
       --network test-network  \
       --restart unless-stopped  \
@@ -76,16 +81,18 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
   ```
 
 ## Grafana
-1.  Create a Grafana container
+1.  Create a Grafana container.
     ```
-    docker run -d
-      -p 3000:3000
-      --name grafana
-      --network test-network
+    docker run -d \
+      -p 3000:3000 \
+      --name grafana \
+      --network test-network \
       grafana/grafana
     ```
 
-2. Add `Data Source` from Prometheus. The URL would be `prometheus-server:9090`
+2. Add `Data Source` from Prometheus. The URL would be `http://prometheus:9090`.
+
+3. Import [MySQL Dashboard](https://grafana.com/dashboards/7362) and [JMX Dashboard](https://grafana.com/dashboards/3457)
 
 
 ## Credit

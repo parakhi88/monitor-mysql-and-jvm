@@ -58,7 +58,7 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
   -p 9104 \
   --network test-network \
   --env DATA_SOURCE_NAME="exporter:password@(mysql:3306)/" \
-  prom/mysqld-exporter \
+  prom/mysqld-exporter
   ```
 
 ## Prometheus

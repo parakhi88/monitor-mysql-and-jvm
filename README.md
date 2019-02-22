@@ -4,7 +4,7 @@ Create a network: `docker network create test-network`
 
 ## Architecture Overview
 
-![Architecture image](./Monitor.png)
+![Architecture image](./Monitor.png#1)
 
   **Dotted-line rectangle**: A Docker container
 

@@ -88,7 +88,7 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
 
 2. Add `Data Source` from Prometheus. The URL would be `http://prometheus:9090`.
 
-3. Import [MySQL Dashboard](https://grafana.com/dashboards/7362) and [JMX Dashboard](https://grafana.com/dashboards/3457)
+3. Import [MySQL Dashboard](https://grafana.com/dashboards/7362) and JMX Dashboard (`jvm/jmx-grafana-dashboard.json`)
 
 
 ## Credit

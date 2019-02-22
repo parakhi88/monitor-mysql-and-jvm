@@ -59,12 +59,6 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
   --network test-network \
   --env DATA_SOURCE_NAME="exporter:password@(mysql:3306)/" \
   prom/mysqld-exporter \
-  --collect.info_schema.processlist \
-  --collect.info_schema.innodb_metrics \
-  --collect.info_schema.tablestats \
-  --collect.info_schema.tables \
-  --collect.info_schema.userstats \
-  --collect.engine_innodb_status
   ```
 
 ## Prometheus

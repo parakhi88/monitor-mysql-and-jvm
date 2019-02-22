@@ -91,9 +91,9 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
 3. Import [MySQL Dashboard](https://grafana.com/dashboards/7362) and JMX Dashboard (`jvm/jmx-grafana-dashboard.json`)
 
 
-[!JMX Dashboard]('./jmx-dashboard.png')
+![JMX Dashboard]('./jmx-dashboard.png')
 
-[!MySQL Dashboard]('./mysql-dashboard.png')
+![MySQL Dashboard]('./mysql-dashboard.png')
 
 
 ## Credit

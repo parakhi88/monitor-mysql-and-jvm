@@ -6,6 +6,8 @@ Create a network: `docker network create test-network`
 
 ![Architecture image](./Monitor.png)
 
+  Dotted-line rectangle: A Docker container
+
 ## JVM
 
 Create a dummy Java server (in case you don't have a Java running server yet) and use

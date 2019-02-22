@@ -6,7 +6,7 @@ Create a network: `docker network create test-network`
 
 ![Architecture image](./Monitor.png)
 
-  Dotted-line rectangle: A Docker container
+  **Dotted-line rectangle**: A Docker container
 
 ## JVM
 

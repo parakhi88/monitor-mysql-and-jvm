@@ -83,7 +83,7 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
 
 2. Edit Dashboard, Data Source and Notifier settings in `grafana/provision`.
 
-1.  Create a Grafana container.
+3.  Create a Grafana container.
     ```
     docker run -d \
       -p 3000:3000 \
@@ -98,7 +98,6 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
 
 ![MySQL Dashboard](./mysql-dashboard.png)
 
-4. Setup Alert for mail
 
 
 ## Credit

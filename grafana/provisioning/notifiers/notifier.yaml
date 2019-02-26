@@ -1,0 +1,8 @@
+notifiers:
+  - name: email-alert
+    type: email
+    uid: email
+    is_default: true
+    settings:
+      addresses: wushuc@gmail.com
+

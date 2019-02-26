@@ -77,23 +77,28 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
   ```
 
 ## Grafana
+1. Edit `grafana/grafana.ini` file:
+  - Edit `smtp` config. Add `user` and `password`.
+  - Follow this [tutorial](https://www.jotform.com/help/392-How-to-Use-Your-Gmail-Account-as-Your-Email-Sender-via-SMTP) if you are using Gmail to send notifications.
+
+2. Edit Dashboard, Data Source and Notifier settings in `grafana/provision`.
+
 1.  Create a Grafana container.
     ```
     docker run -d \
       -p 3000:3000 \
       --name grafana \
       --network test-network \
+      --mount type=bind,src="$(pwd)"/grafana/grafana.ini,target=/etc/grafana/grafana.ini \
+			--mount type=bind,src="$(pwd)"/grafana/provisioning,target=/etc/grafana/provisioning
       grafana/grafana
     ```
-
-2. Add `Data Source` from Prometheus. The URL would be `http://prometheus:9090`.
-
-3. Import [MySQL Dashboard](https://grafana.com/dashboards/7362) and JMX Dashboard (`jvm/jmx-grafana-dashboard.json`)
-
 
 ![JMX Dashboard](./jmx-dashboard.png)
 
 ![MySQL Dashboard](./mysql-dashboard.png)
+
+4. Setup Alert for mail
 
 
 ## Credit

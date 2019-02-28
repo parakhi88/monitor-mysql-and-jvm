@@ -81,7 +81,7 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
   - Edit `smtp` config. Add `user` and `password`.
   - Follow this [tutorial](https://www.jotform.com/help/392-How-to-Use-Your-Gmail-Account-as-Your-Email-Sender-via-SMTP) if you are using Gmail to send notifications.
 
-2. Edit Dashboard, Data Source and Notifier settings in `grafana/provision`.
+2. Edit Dashboard, Data Source and Notifier settings in `grafana/provision`. Edit `grafana/provision/notifiers/notifier.yaml` to add emails.
 
 3.  Create a Grafana container.
     ```
@@ -90,7 +90,7 @@ Create a dummy Java server (in case you don't have a Java running server yet) an
       --name grafana \
       --network test-network \
       --mount type=bind,src="$(pwd)"/grafana/grafana.ini,target=/etc/grafana/grafana.ini \
-			--mount type=bind,src="$(pwd)"/grafana/provisioning,target=/etc/grafana/provisioning
+      --mount type=bind,src="$(pwd)"/grafana/provisioning,target=/etc/grafana/provisioning \
       grafana/grafana
     ```
 

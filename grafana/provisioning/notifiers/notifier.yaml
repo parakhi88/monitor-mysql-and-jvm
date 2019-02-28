@@ -2,6 +2,7 @@ notifiers:
   - name: email-alert
     type: email
     uid: email
+    org_id: 1
     is_default: true
     settings:
       addresses: wushuc@gmail.com
